@@ -12,14 +12,14 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import letter
 
-pdfmetrics.registerFont(TTFont("맑은고딕", "malgun.ttf"))
-pdf = canvas.Canvas("test.pdf", pagesize=letter)
+pdfmetrics.registerFont(TTFont("맑은고딕", st.secrets["font_name"]))
+pdf = canvas.Canvas(st.secrets["file_name"], pagesize=letter)
 pdf.setFont("맑은고딕", 16)
 pdf.drawString(30, 750, "파이썬 PDF 파일 생성")
 pdf.save()
 
 
-with urllib.request.urlopen('test.pdf') as f:
+with urllib.request.urlopen(st.secrets["file_name"]) as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
 # Embedding PDF in HTML
