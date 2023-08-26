@@ -37,6 +37,7 @@ pdf.save()
 result = pdf2jpg.convert_pdf2jpg(st.secrets["file_name"], st.secrets["file_name_jpg"], pages="ALL")
 images = []
 st.write(result)
+st.image(st.secrets["file_name_jpg"])
 # print(result)
 # for image_path in result[0]["output_jpgfiles"]:
 #     images.append(np.array(Image.open(image_path)))
