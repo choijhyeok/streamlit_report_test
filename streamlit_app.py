@@ -6,7 +6,7 @@ from streamlit.components.v1 import iframe
 import os
 
 os.system('apt-get install -y fonts-nanum')
-os.system('fc-cache -fv')
+os.system('fc-cache -f -v')
 
 
 st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
