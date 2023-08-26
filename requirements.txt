@@ -1,3 +1,6 @@
 pdfkit
 streamlit
 reportlab
+pdf2jpg
+numpy
+Pillow
