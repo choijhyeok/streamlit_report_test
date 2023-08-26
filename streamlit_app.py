@@ -19,9 +19,8 @@ pdf.drawString(30, 750, "파이썬 PDF 파일 생성")
 pdf.save()
 
 
-with urllib.request.urlopen(st.secrets["file_name"]) as f:
+with open(st.secrets["file_name"], "rb") as f:
     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
 # Embedding PDF in HTML
 pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="950" type="application/pdf"></iframe>'
 
