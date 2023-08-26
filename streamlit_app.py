@@ -6,7 +6,7 @@ from streamlit.components.v1 import iframe
 import streamlit.components.v1 as components
 import urllib
 import base64
-import pdf2jpg
+from pdf2jpg import pdf2jpg
 import numpy as np
 from PIL import Image
 import os
