@@ -36,16 +36,18 @@ pdf.save()
 
 result = pdf2jpg.convert_pdf2jpg(st.secrets["file_name"], st.secrets["file_name_jpg"], pages="ALL")
 images = []
-for image_path in result[0]["output_jpgfiles"]:
-    images.append(np.array(Image.open(image_path)))
 
-merged_arr = np.concatenate(images)
-merged_arr = crop_white_space(merged_arr)
-# merged_path = os.path.join(st.secrets["file_name_jpg"], "merged.jpeg")
-Image.fromarray(merged_arr).save(st.secrets["file_name_jpeg"])
+print(result)
+# for image_path in result[0]["output_jpgfiles"]:
+#     images.append(np.array(Image.open(image_path)))
 
-# Display the image
-st.image(st.secrets["file_name_jpeg"])
+# merged_arr = np.concatenate(images)
+# merged_arr = crop_white_space(merged_arr)
+# # merged_path = os.path.join(st.secrets["file_name_jpg"], "merged.jpeg")
+# Image.fromarray(merged_arr).save(st.secrets["file_name_jpeg"])
+
+# # Display the image
+# st.image(st.secrets["file_name_jpeg"])
 
 
 # with open(st.secrets["file_name"], "rb") as f:
