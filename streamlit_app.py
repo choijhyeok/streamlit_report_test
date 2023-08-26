@@ -45,7 +45,7 @@ merged_arr = crop_white_space(merged_arr)
 Image.fromarray(merged_arr).save(st.secrets["file_name_jpeg"])
 
 # Display the image
-st.image(merged_path)
+st.image(st.secrets["file_name_jpeg"])
 
 
 # with open(st.secrets["file_name"], "rb") as f:
