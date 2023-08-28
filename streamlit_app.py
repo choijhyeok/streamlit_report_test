@@ -3,67 +3,6 @@ from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoad
 from datetime import date
 import streamlit as st
 from streamlit.components.v1 import iframe
-import streamlit.components.v1 as components
-import urllib
-import base64
-from pdf2jpg import pdf2jpg
-import numpy as np
-from PIL import Image
-import os
-
-from reportlab.pdfgen import canvas
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib.pagesizes import letter
-
-
-def crop_white_space(arr: np.array) -> np.array:
-    FOOTER_ROWS = 300
-    WHITE_VALUE = 255
-    white_pixels = (arr == WHITE_VALUE)
-    white_rows = list(np.all(white_pixels, axis=(1, 2)))
-    last_non_white_row_idx = max(loc for loc, val in enumerate(white_rows) if not val)
-    merged_arr = arr[:last_non_white_row_idx + FOOTER_ROWS]
-    return merged_arr
-
-
-# pdfmetrics.registerFont(TTFont("맑은고딕", st.secrets["font_name"]))
-# pdf = canvas.Canvas(st.secrets["file_name"], pagesize=letter)
-# pdf.setFont("맑은고딕", 16)
-# pdf.drawString(30, 750, "파이썬 PDF 파일 생성")
-# pdf.save()
-
-
-# result = pdf2jpg.convert_pdf2jpg(st.secrets["file_name"], st.secrets["file_name_jpg"], pages="ALL")
-# images = []
-# st.write(result)
-# st.image(st.secrets["file_name_jpg"])
-# print(result)
-# for image_path in result[0]["output_jpgfiles"]:
-#     images.append(np.array(Image.open(image_path)))
-
-# merged_arr = np.concatenate(images)
-# merged_arr = crop_white_space(merged_arr)
-# # merged_path = os.path.join(st.secrets["file_name_jpg"], "merged.jpeg")
-# Image.fromarray(merged_arr).save(st.secrets["file_name_jpeg"])
-
-# # Display the image
-# st.image(st.secrets["file_name_jpeg"])
-
-
-# with open(st.secrets["file_name"], "rb") as f:
-#     base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-# # Embedding PDF in HTML
-# pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="950" type="application/pdf"></iframe>'
-
-# # Displaying File
-# st.markdown(pdf_display, unsafe_allow_html=True)
-               
-
-
-
-
-
 
 st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
 st.title("🎓 Diploma PDF Generator")
