@@ -27,17 +27,17 @@ def crop_white_space(arr: np.array) -> np.array:
     return merged_arr
 
 
-pdfmetrics.registerFont(TTFont("맑은고딕", st.secrets["font_name"]))
-pdf = canvas.Canvas(st.secrets["file_name"], pagesize=letter)
-pdf.setFont("맑은고딕", 16)
-pdf.drawString(30, 750, "파이썬 PDF 파일 생성")
-pdf.save()
+# pdfmetrics.registerFont(TTFont("맑은고딕", st.secrets["font_name"]))
+# pdf = canvas.Canvas(st.secrets["file_name"], pagesize=letter)
+# pdf.setFont("맑은고딕", 16)
+# pdf.drawString(30, 750, "파이썬 PDF 파일 생성")
+# pdf.save()
 
 
-result = pdf2jpg.convert_pdf2jpg(st.secrets["file_name"], st.secrets["file_name_jpg"], pages="ALL")
-images = []
-st.write(result)
-st.image(st.secrets["file_name_jpg"])
+# result = pdf2jpg.convert_pdf2jpg(st.secrets["file_name"], st.secrets["file_name_jpg"], pages="ALL")
+# images = []
+# st.write(result)
+# st.image(st.secrets["file_name_jpg"])
 # print(result)
 # for image_path in result[0]["output_jpgfiles"]:
 #     images.append(np.array(Image.open(image_path)))
@@ -65,51 +65,51 @@ st.image(st.secrets["file_name_jpg"])
 
 
 
-# st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
-# st.title("🎓 Diploma PDF Generator")
+st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
+st.title("🎓 Diploma PDF Generator")
 
-# st.write(
-#     "This app shows you how you can use Streamlit to make a PDF generator app in just a few lines of code!"
-# )
+st.write(
+    "This app shows you how you can use Streamlit to make a PDF generator app in just a few lines of code!"
+)
 
-# left, right = st.columns(2)
+left, right = st.columns(2)
 
-# right.write("Here's the template we'll be using:")
+right.write("Here's the template we'll be using:")
 
-# right.image("template.png", width=300)
+right.image("template.png", width=300)
 
-# env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-# template = env.get_template("template.html")
+env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+template = env.get_template("template.html")
 
 
-# left.write("Fill in the data:")
-# form = left.form("template_form")
-# student = form.text_input("Student name")
-# course = form.selectbox(
-#     "Choose course",
-#     ["Report Generation in Streamlit", "Advanced Cryptography"],
-#     index=0,
-# )
-# grade = form.slider("Grade", 1, 100, 60)
-# submit = form.form_submit_button("Generate PDF")
+left.write("Fill in the data:")
+form = left.form("template_form")
+student = form.text_input("Student name")
+course = form.selectbox(
+    "Choose course",
+    ["Report Generation in Streamlit", "Advanced Cryptography"],
+    index=0,
+)
+grade = form.slider("Grade", 1, 100, 60)
+submit = form.form_submit_button("Generate PDF")
 
-# if submit:
-#     html = template.render(
-#         student=student,
-#         course=course,
-#         grade=f"{grade}/100",
-#         date=date.today().strftime("%B %d, %Y"),
-#     )
+if submit:
+    html = template.render(
+        student=student,
+        course=course,
+        grade=f"{grade}/100",
+        date=date.today().strftime("%B %d, %Y"),
+    )
 
-#     pdf = pdfkit.from_string(html, False)
-#     st.balloons()
+    pdf = pdfkit.from_string(html, False)
+    st.balloons()
 
-#     right.success("🎉 Your diploma was generated!")
-#     # st.write(html, unsafe_allow_html=True)
-#     # st.write("")
-#     right.download_button(
-#         "⬇️ Download PDF",
-#         data=pdf,
-#         file_name="diploma.pdf",
-#         mime="application/octet-stream",
-#     )
+    right.success("🎉 Your diploma was generated!")
+    # st.write(html, unsafe_allow_html=True)
+    # st.write("")
+    right.download_button(
+        "⬇️ Download PDF",
+        data=pdf,
+        file_name="diploma.pdf",
+        mime="application/octet-stream",
+    )
