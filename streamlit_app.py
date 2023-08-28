@@ -50,5 +50,5 @@ if submit:
         "⬇️ Download PDF",
         data=pdf,
         file_name="diploma.pdf",
-        mime="application/octet-stream",
+        
     )
